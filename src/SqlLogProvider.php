@@ -31,14 +31,15 @@ class SqlLogProvider extends ServiceProvider
             $this->mergeConfigFrom($source, 'sqllog');
         }
 
+        $logMethod = config('sqllog.base_level');
         $logLevel = Logger::toMonologLevel(config('app.log_level'));
-        $startLevel = Logger::toMonologLevel(config('sqllog.base_level'));
+        $startLevel = Logger::toMonologLevel($logMethod);
         $ignoreIps = config('sqllog.ignore.ip');
         $ignoreUris = config('sqllog.ignore.uri');
 
         // app.debugがtrueの場合クエリをログに出力する。
         if ($logLevel <= $startLevel) {
-            DB::listen(function($query) use ($ignoreIps, $ignoreUris, $startLevel) {
+            DB::listen(function($query) use ($ignoreIps, $ignoreUris, $logMethod) {
                 foreach ($ignoreIps as $ignoreIp) {
                     if (NetUtils::isIn(\Request::ip(), $ignoreIp)) {
                         return;
@@ -50,7 +51,7 @@ class SqlLogProvider extends ServiceProvider
                     }
                 }
 
-                Log::${$startLevel}('QUERY:[' . $query->sql . '] BINDINGS:' . json_encode($query->bindings), ['TIME' => $query->time]);
+                Log::${$logMethod}('QUERY:[' . $query->sql . '] BINDINGS:' . json_encode($query->bindings), ['TIME' => $query->time]);
             });
         }
     }
