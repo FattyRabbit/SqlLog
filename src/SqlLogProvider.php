@@ -51,7 +51,7 @@ class SqlLogProvider extends ServiceProvider
                     }
                 }
 
-                Log::${$logMethod}('QUERY:[' . $query->sql . '] BINDINGS:' . json_encode($query->bindings), ['TIME' => $query->time]);
+                Log::{$logMethod}('QUERY:[' . $query->sql . '] BINDINGS:' . json_encode($query->bindings), ['TIME' => $query->time]);
             });
         }
     }
