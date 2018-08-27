@@ -12,7 +12,7 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
 use Monolog\Logger;
 
-class SqlLogProvider extends ServiceProvider
+class SqlLogSearviceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
