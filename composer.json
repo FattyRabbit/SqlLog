@@ -1,11 +1,12 @@
 {
     "name": "fatty-rabbit/sql-log",
+    "description": "",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Kugyon.i",
-            "email": "fatty.rabbit.75@gmail.com"
+            "name": "FattyRabbit",
+            "email": "fatty.rabbit.dev@gmail.com"
         }
     ],
     "require": {
