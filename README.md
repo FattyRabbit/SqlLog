@@ -12,7 +12,7 @@ For Laravel versions 5.3+, please continue below.
 Install Sql Log:
 
 ```bash
-composer require fideloper/proxy
+composer require fatty-rabbit/sql-log
 ```
 
 Add the Service Provider:
