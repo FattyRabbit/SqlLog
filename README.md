@@ -24,7 +24,7 @@ Add the Service Provider:
 );
 ```
 
-Publish the package config file to `config/trustedproxy.php`:
+Publish the package config file to `config/sqllog.php`:
 
 ```bash
 $ php artisan vendor:publish --provider="FattyRabbit\SqlLog\SqlLogSearviceProvider"
